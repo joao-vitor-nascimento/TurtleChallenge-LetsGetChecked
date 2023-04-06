@@ -1,5 +1,5 @@
 Board;X;4;Y;4;;
 ExitPoint;X;3;Y;3;;
-Turtle;X;1;Y;0;;
+Turtle;X;1;Y;0
 Mine;X;2;Y;2;;
 Mine;X;1;Y;3;;

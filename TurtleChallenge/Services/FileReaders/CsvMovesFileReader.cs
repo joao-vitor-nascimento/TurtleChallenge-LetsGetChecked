@@ -1,10 +1,18 @@
 ﻿using TurtleChallenge.Domain.Board;
+using TurtleChallenge.Services.Builders;
 using TurtleChallenge.Utils;
 
 namespace TurtleChallenge.Services.FileReaders
 {
     public class CsvMovesFileReader : IMovesFileReader
     {
+        private readonly IMovesBuilder _movesBuilder;
+
+        public CsvMovesFileReader(IMovesBuilder movesBuilder)
+        {
+            _movesBuilder = movesBuilder;
+        }
+
         public Dictionary<string, IEnumerable<Moves>> ReadMovesFile(string path)
         {
             var allMoveSequenceFileString = File.ReadAllLines(path);
@@ -22,17 +30,7 @@ namespace TurtleChallenge.Services.FileReaders
         public (string name, IEnumerable<Moves> moveSequence) GetMoveSequence(string[] csvRow)
         {
             var name = csvRow[0];
-            var moves = new List<Moves>();
-            for (int i = 1; i < csvRow.Length; i++)
-            {
-                if (string.IsNullOrEmpty(csvRow[i]))
-                {
-                    break;
-                }
-
-                var move = Enum.Parse<Moves>(csvRow[i], true);
-                moves.Add(move);
-            }
+            var moves = _movesBuilder.BuildMovesFromCsvRow(csvRow);
             return (name, moves);
         }
     }

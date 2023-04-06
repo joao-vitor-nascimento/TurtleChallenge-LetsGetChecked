@@ -1,30 +1,9 @@
 {
-  "SucessSequence": [
-    "rotate",
-    "move",
-    "move",
-    "rotate",
-    "move",
-    "move",
-    "move"
-  ],
-  "MineSequence": [
-    "rotate",
-    "move",
-    "rotate",
-    "move",
-    "move",
-    "move",
-    "rotate",
-    "rotate",
+  "TwoMovesSequence": [
     "rotate",
     "move"
   ],
-  "InDangerSequence": [
-    "rotate",
-    "move"
-  ],
-  "OutOfTheBoardSequence": [
+  "OneMoveSequence": [
     "move"
   ]
 }

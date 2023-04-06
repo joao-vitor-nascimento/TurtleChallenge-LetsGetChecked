@@ -7,9 +7,10 @@ namespace TurtleChallenge.Tests.Services.FileReaders
 {
     public class JsonBoardFileReaderTest
     {
+        private readonly Board _boardWithTurtleDirection;
+        private readonly Board _boardWithoutTurtleDirection;
+
         private readonly IBoardFileReader _jsonBoardReader;
-        private Board _boardWithTurtleDirection;
-        private Board _boardWithoutTurtleDirection;
 
         public JsonBoardFileReaderTest() 
         {

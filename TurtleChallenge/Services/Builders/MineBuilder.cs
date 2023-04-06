@@ -5,6 +5,7 @@ namespace TurtleChallenge.Services.Builders
 {
     public class MineBuilder : IMineBuilder
     {
+        public MineBuilder() { }
         public Mine BuildMine(int x, int y)
         {
             return new Mine(x, y);

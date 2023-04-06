@@ -15,7 +15,8 @@ namespace TurtleChallenge.IoC
                 .AddSingleton<ITurtleBuilder, TurtleBuilder>()
                 .AddSingleton<IExitPointBuilder, ExitPointBuilder>()
                 .AddSingleton<IMineBuilder, MineBuilder>()
-                .AddSingleton<IBoardBuilder, BoardBuilder>();
+                .AddSingleton<IBoardBuilder, BoardBuilder>()
+                .AddSingleton<IMovesBuilder, MovesBuilder>();
 
             if (string.IsNullOrEmpty(boardFileExtension) || string.IsNullOrEmpty(movesFileExtension))
             {
