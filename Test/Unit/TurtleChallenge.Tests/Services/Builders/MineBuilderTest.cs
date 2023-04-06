@@ -3,7 +3,7 @@ using TurtleChallenge.DTO.BoardCreation;
 using TurtleChallenge.Services.Builders;
 using Xunit;
 
-namespace TurtleChallenge.Tests.Builders
+namespace TurtleChallenge.Tests.Services.Builders
 {
     public class MineBuilderTest
     {
@@ -22,7 +22,7 @@ namespace TurtleChallenge.Tests.Builders
             var y = 2;
 
             //Act
-            var result = _mineBuilder.BuildMine(x,y);
+            var result = _mineBuilder.BuildMine(x, y);
             //Assert
             Assert.Equal(x, result.X);
             Assert.Equal(y, result.Y);
@@ -52,7 +52,7 @@ namespace TurtleChallenge.Tests.Builders
 
             var minesToCreate = new List<MineInformationDTO>
             {
-                new MineInformationDTO{X=x1,Y=y1}, 
+                new MineInformationDTO{X=x1,Y=y1},
                 new MineInformationDTO{X=x2,Y=y2},
             };
 
@@ -67,7 +67,7 @@ namespace TurtleChallenge.Tests.Builders
             //Assert
             var resultAsList = result.ToList();
             Assert.Equal(expected.Count, resultAsList.Count);
-            for(int i = 0; i < expected.Count; i++)
+            for (int i = 0; i < expected.Count; i++)
             {
                 Assert.Equal(expected[i].X, resultAsList[i].X);
                 Assert.Equal(expected[i].Y, resultAsList[i].Y);

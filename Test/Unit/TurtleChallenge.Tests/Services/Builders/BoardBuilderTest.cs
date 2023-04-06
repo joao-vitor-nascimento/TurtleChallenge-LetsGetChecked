@@ -5,7 +5,7 @@ using TurtleChallenge.DTO.BoardCreation;
 using TurtleChallenge.Services.Builders;
 using Xunit;
 
-namespace TurtleChallenge.Tests.Builders
+namespace TurtleChallenge.Tests.Services.Builders
 {
     public class BoardBuilderTest
     {

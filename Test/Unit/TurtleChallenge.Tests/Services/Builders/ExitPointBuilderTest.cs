@@ -2,12 +2,12 @@
 using TurtleChallenge.Services.Builders;
 using Xunit;
 
-namespace TurtleChallenge.Tests.Builders
+namespace TurtleChallenge.Tests.Services.Builders
 {
     public class ExitPointBuilderTest
     {
         private readonly IExitPointBuilder _exitPointBuilder;
-        public ExitPointBuilderTest() 
+        public ExitPointBuilderTest()
         {
             _exitPointBuilder = new ExitPointBuilder();
         }
