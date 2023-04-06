@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TurtleChallenge": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\jonim\\Desktop\\TurtleChallenge\\board.csv C:\\Users\\jonim\\Desktop\\TurtleChallenge\\moves.csv"
+    }
+  }
+}
