@@ -1,4 +1,2 @@
-SucessSequence;rotate;move;move;rotate;move;move;move;;;
-MineSequence;rotate;move;rotate;move;move;move;rotate;rotate;rotate;move
-InDangerSequence;rotate;move;;;;;;;;
-OutOfTheBoardSequence;move;;;;;;;;;
+TwoMovesSequence;rotate;move
+OneMoveSequence;move

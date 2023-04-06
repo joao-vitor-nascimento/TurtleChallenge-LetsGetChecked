@@ -9,7 +9,7 @@ namespace TurtleChallenge.Services.FileReaders
         {
         }
 
-        public Dictionary<string, IEnumerable<Moves>> ReadMovesFile(string path)
+        public IDictionary<string, IEnumerable<Moves>> ReadMovesFile(string path)
         {
             using (StreamReader r = new(path))
             {

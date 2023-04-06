@@ -65,12 +65,15 @@ namespace TurtleChallenge.Tests.Services.FileReaders
             //Arrange
             string path = "./TestFiles/boardWithDirection.csv";
             _boardBuilderMock.Setup(x =>
-                x.BuildBoard(It.Is<BoardInformationDTO>(x => AreBoardsInformationEquals(_boardInformationWithTurtleDirection,x, false))
+                x.BuildBoard(It.Is<BoardInformationDTO>(x => AreBoardsInformationEquals(_boardInformationWithTurtleDirection, x, false))
                 )).Returns(_boardWithTurtleDirection);
 
             //Act
             var result = _csvBoardFileReader.ReadBoardFile(path);
             //Assert
+            _boardBuilderMock.Verify(x =>
+                x.BuildBoard(It.Is<BoardInformationDTO>(x => AreBoardsInformationEquals(_boardInformationWithTurtleDirection, x, false))
+                ), Times.Once);
             AssertEqualsBoard(_boardWithTurtleDirection, result);
         }
 
@@ -85,6 +88,9 @@ namespace TurtleChallenge.Tests.Services.FileReaders
             //Act
             var result = _csvBoardFileReader.ReadBoardFile(path);
             //Assert
+            _boardBuilderMock.Verify(x =>
+               x.BuildBoard(It.Is<BoardInformationDTO>(x => AreBoardsInformationEquals(_boardInformationWithoutTurtleDirection, x, true))
+               ), Times.Once);
             AssertEqualsBoard(_boardWithoutTurtleDirection, result);
         }
 
@@ -109,7 +115,7 @@ namespace TurtleChallenge.Tests.Services.FileReaders
 
         private bool AreBoardsInformationEquals(BoardInformationDTO firstBoardInfo, BoardInformationDTO secondBoardInfo, bool isFacingDirectionNull)
         {
-            var boardSizeEquality = 
+            var boardSizeEquality =
                  firstBoardInfo.XSize.Equals(secondBoardInfo.XSize) &&
                  firstBoardInfo.YSize.Equals(secondBoardInfo.YSize);
 
@@ -119,11 +125,11 @@ namespace TurtleChallenge.Tests.Services.FileReaders
             var minesEquality = true;
             for (int i = 0; i < expectedMines.Count; i++)
             {
-                var tempEquality = 
-                    expectedMines[i].X.Equals(resultMines[i].X) && 
+                var tempEquality =
+                    expectedMines[i].X.Equals(resultMines[i].X) &&
                     expectedMines[i].Y.Equals(resultMines[i].Y);
 
-                if(minesEquality && !tempEquality)
+                if (minesEquality && !tempEquality)
                 {
                     minesEquality = false;
                 }
@@ -133,10 +139,10 @@ namespace TurtleChallenge.Tests.Services.FileReaders
                 firstBoardInfo.ExitPointInformation.X.Equals(secondBoardInfo.ExitPointInformation.X) &&
                 firstBoardInfo.ExitPointInformation.Y.Equals(secondBoardInfo.ExitPointInformation.Y);
 
-            var turtleEquality = !isFacingDirectionNull ? 
+            var turtleEquality = !isFacingDirectionNull ?
                 firstBoardInfo.TurtleInformation.X.Equals(secondBoardInfo.TurtleInformation.X) &&
-                firstBoardInfo.TurtleInformation.Y.Equals (secondBoardInfo.TurtleInformation.Y) &&
-                firstBoardInfo.TurtleInformation.FacingDirection.Equals( secondBoardInfo.TurtleInformation.FacingDirection )
+                firstBoardInfo.TurtleInformation.Y.Equals(secondBoardInfo.TurtleInformation.Y) &&
+                firstBoardInfo.TurtleInformation.FacingDirection.Equals(secondBoardInfo.TurtleInformation.FacingDirection)
                 :
                 firstBoardInfo.TurtleInformation.X.Equals(secondBoardInfo.TurtleInformation.X) &&
                 firstBoardInfo.TurtleInformation.Y.Equals(secondBoardInfo.TurtleInformation.Y)

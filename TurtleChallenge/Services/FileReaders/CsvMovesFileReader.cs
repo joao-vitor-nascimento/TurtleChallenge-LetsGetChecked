@@ -13,7 +13,7 @@ namespace TurtleChallenge.Services.FileReaders
             _movesBuilder = movesBuilder;
         }
 
-        public Dictionary<string, IEnumerable<Moves>> ReadMovesFile(string path)
+        public IDictionary<string, IEnumerable<Moves>> ReadMovesFile(string path)
         {
             var allMoveSequenceFileString = File.ReadAllLines(path);
             var moves = new Dictionary<string, IEnumerable<Moves>>();
