@@ -1,14 +1,15 @@
 ﻿using TurtleChallenge.Domain.Turtle;
+using TurtleChallenge.DTO.BoardCreation;
 
 namespace TurtleChallenge.Services.Builders
 {
     public class TurtleBuilder : ITurtleBuilder
     {
-        public Turtle BuildTurtle(int x, int y, string? facingDirection)
+        public Turtle BuildTurtle(TurtleInformationDTO turtleInformationDTO)
         {
-            Enum.TryParse<Direction>(facingDirection, true, out var direction);
+            Enum.TryParse<Direction>(turtleInformationDTO.FacingDirection, true, out var direction);
 
-            return new Turtle(x, y, direction);
+            return new Turtle(turtleInformationDTO.X, turtleInformationDTO.Y, direction);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using TurtleChallenge.Domain.Turtle;
+using TurtleChallenge.DTO.BoardCreation;
 using TurtleChallenge.Services.Builders;
 using Xunit;
 
@@ -7,7 +8,8 @@ namespace TurtleChallenge.Tests.Builders
     public class TurtleBuilderTest
     {
         private readonly ITurtleBuilder _turtleBuilder;
-        public TurtleBuilderTest() 
+
+        public TurtleBuilderTest()
         {
             _turtleBuilder = new TurtleBuilder();
         }
@@ -16,16 +18,19 @@ namespace TurtleChallenge.Tests.Builders
         public void BuildTurtleTest_WithDirectionNull()
         {
             //Arrange
-            int x = 0;
-            int y = 1;
-            string? direction = null;
+            var turtleInformationDto = new TurtleInformationDTO
+            {
+                X = 0,
+                Y = 1,
+                FacingDirection = null
+            };
 
             //Act
-            var turtle = _turtleBuilder.BuildTurtle(x, y, direction);
+            var turtle = _turtleBuilder.BuildTurtle(turtleInformationDto);
 
             //Assert
-            Assert.Equal(x, turtle.X);
-            Assert.Equal(y, turtle.Y);
+            Assert.Equal(turtleInformationDto.X, turtle.X);
+            Assert.Equal(turtleInformationDto.Y, turtle.Y);
             Assert.Equal(Direction.North, turtle.FacingDirection);
         }
 
@@ -33,16 +38,19 @@ namespace TurtleChallenge.Tests.Builders
         public void BuildTurtleTest_WithDirectionWrongValue()
         {
             //Arrange
-            int x = 0;
-            int y = 1;
-            string? direction = "IGotChecked";
+            var turtleInformationDto = new TurtleInformationDTO
+            {
+                X = 0,
+                Y = 1,
+                FacingDirection = "IGotChecked"
+            };
 
             //Act
-            var turtle = _turtleBuilder.BuildTurtle(x, y, direction);
+            var turtle = _turtleBuilder.BuildTurtle(turtleInformationDto);
 
             //Assert
-            Assert.Equal(x, turtle.X);
-            Assert.Equal(y, turtle.Y);
+            Assert.Equal(turtleInformationDto.X, turtle.X);
+            Assert.Equal(turtleInformationDto.Y, turtle.Y);
             Assert.Equal(Direction.North, turtle.FacingDirection);
         }
 
@@ -62,15 +70,19 @@ namespace TurtleChallenge.Tests.Builders
         public void BuildTurtleTest_WithDirectionRightValue(string direction, Direction expected)
         {
             //Arrange
-            int x = 0;
-            int y = 1;
+            var turtleInformationDto = new TurtleInformationDTO
+            {
+                X = 0,
+                Y = 1,
+                FacingDirection = direction
+            };
 
             //Act
-            var turtle = _turtleBuilder.BuildTurtle(x, y, direction);
+            var turtle = _turtleBuilder.BuildTurtle(turtleInformationDto);
 
             //Assert
-            Assert.Equal(x, turtle.X);
-            Assert.Equal(y, turtle.Y);
+            Assert.Equal(turtleInformationDto.X, turtle.X);
+            Assert.Equal(turtleInformationDto.Y, turtle.Y);
             Assert.Equal(expected, turtle.FacingDirection);
         }
     }

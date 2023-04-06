@@ -1,12 +1,13 @@
 ﻿using TurtleChallenge.Domain.Board;
+using TurtleChallenge.DTO.BoardCreation;
 
 namespace TurtleChallenge.Services.Builders
 {
     public class ExitPointBuilder : IExitPointBuilder
     {
-        public ExitPoint BuildExitPoint(int x, int y)
+        public ExitPoint BuildExitPoint(ExitPointInformationDTO exitPointInformationDTO)
         {
-            return new ExitPoint(x, y);
+            return new ExitPoint(exitPointInformationDTO.X, exitPointInformationDTO.Y);
         }
     }
 }

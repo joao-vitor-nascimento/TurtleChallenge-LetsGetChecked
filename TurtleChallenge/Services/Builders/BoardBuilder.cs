@@ -22,11 +22,8 @@ namespace TurtleChallenge.Services.Builders
         public Board BuildBoard(BoardInformationDTO boardInformationDTO)
         {
             var mines = _mineBuilder.BuildMultipleMines(boardInformationDTO.MinesInformation);
-            var exitPoint = _exitPointBuilder.BuildExitPoint(boardInformationDTO.ExitPointInformation.X, boardInformationDTO.ExitPointInformation.Y);
-            var turtle = _turtleBuilder.BuildTurtle(
-                boardInformationDTO.TurtleInformation.X,
-                boardInformationDTO.TurtleInformation.Y,
-                boardInformationDTO.TurtleInformation.FacingDirection);
+            var exitPoint = _exitPointBuilder.BuildExitPoint(boardInformationDTO.ExitPointInformation);
+            var turtle = _turtleBuilder.BuildTurtle(boardInformationDTO.TurtleInformation);
 
             return new Board(boardInformationDTO.XSize, boardInformationDTO.YSize, mines, exitPoint, turtle);
         }

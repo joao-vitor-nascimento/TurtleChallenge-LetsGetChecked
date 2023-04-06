@@ -1,4 +1,5 @@
-﻿using TurtleChallenge.Services.Builders;
+﻿using TurtleChallenge.DTO.BoardCreation;
+using TurtleChallenge.Services.Builders;
 using Xunit;
 
 namespace TurtleChallenge.Tests.Builders
@@ -15,15 +16,18 @@ namespace TurtleChallenge.Tests.Builders
         public void BuildExitPoint()
         {
             //Arrange
-            int x = 0;
-            int y = 1;
+            var exitPointInfoDto = new ExitPointInformationDTO
+            {
+                X = 0,
+                Y = 1
+            };
 
             //Act
-            var exitPoint = _exitPointBuilder.BuildExitPoint(x, y);
+            var exitPoint = _exitPointBuilder.BuildExitPoint(exitPointInfoDto);
 
             //Assert
-            Assert.Equal(x, exitPoint.X);
-            Assert.Equal(y, exitPoint.Y);
+            Assert.Equal(exitPointInfoDto.X, exitPoint.X);
+            Assert.Equal(exitPointInfoDto.Y, exitPoint.Y);
         }
     }
 }

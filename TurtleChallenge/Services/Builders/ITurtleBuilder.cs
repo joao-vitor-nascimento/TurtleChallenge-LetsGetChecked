@@ -1,9 +1,10 @@
 ﻿using TurtleChallenge.Domain.Turtle;
+using TurtleChallenge.DTO.BoardCreation;
 
 namespace TurtleChallenge.Services.Builders
 {
     public interface ITurtleBuilder
     {
-        Turtle BuildTurtle(int x, int y, string? facingDirection);
+        Turtle BuildTurtle(TurtleInformationDTO turtleInformationDTO);
     }
 }
